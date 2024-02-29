@@ -1,8 +1,8 @@
-PWD /Users/arugyani/Documents/notes/machine learning/knn
+PWD /Users/arugyani/Documents/notes/machine learning/knn/latex
 INPUT /usr/local/texlive/2023/texmf.cnf
 INPUT /usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/arugyani/Documents/notes/machine learning/knn/Nearest Neighbor Methods.tex
+INPUT /Users/arugyani/Documents/notes/machine learning/knn/latex/Nearest Neighbor Methods.tex
 OUTPUT Nearest Neighbor Methods.log
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/report.cls
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/report.cls
