@@ -1,0 +1,6 @@
+\contentsline {chapter}{\numberline {1}Introduction}{2}{}%
+\contentsline {section}{\numberline {1.1}General Description}{2}{}%
+\contentsline {section}{\numberline {1.2}Characteristics}{2}{}%
+\contentsline {subsection}{\numberline {1.2.1}Advantages}{2}{}%
+\contentsline {subsection}{\numberline {1.2.2}Disadvantages}{3}{}%
+\contentsline {section}{\numberline {1.3}Practical Challenges}{3}{}%
