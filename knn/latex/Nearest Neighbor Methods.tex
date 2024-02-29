@@ -39,7 +39,7 @@ examples. This is different than regression where the data is split into
 the k-data points, \((x^{(i)}, y^{(i)})\), such that \(x^{(i)}\) (feature
 vector) is closest to \(x'\). 
 \\[12pt]
-We preedict the label \(y'\) of a new data point \(x'\) to be the most frequent
+We predict the label \(y'\) of a new data point \(x'\) to be the most frequent
 label among its \(k\) nearest neighboring data points in the training dataset,
 a.k.a a majority vote.
 
@@ -48,8 +48,8 @@ Nearest neighbor methods apply to data sets with points in \(\mathds{R}^d\).
   \begin{itemize}
     \item This means that these methods apply to datasets where each
     data point is a vector of \(d\) real-valued\footnote{The term ``real-valued''
-    is used here as a generalizationn for the type of data, since it could be
-    phsyical measurements, probabilities, monetary values, etc.} features.
+    is used here as a generalization for the type of data, since it could be
+    physical measurements, probabilities, monetary values, etc.} features.
     \item Best for large data sets with only a few (\(< 20\)) attributes.
   \end{itemize}
 
@@ -57,11 +57,11 @@ Nearest neighbor methods apply to data sets with points in \(\mathds{R}^d\).
   \begin{itemize}
     \item \emph{Learning is easy.}
     
-    With nearest neighbor methods, learning is considered ``easy'' for a few
+    With nearest-neighbor methods, learning is considered ``easy'' for a few
     reasons. First, there is no ``training phase'' where we have to fit a model
     to the data. Here, we simply are storing the dataset.
     \\[12pt]
-    Also, the model is quite versatile when it comes to its use-case. For
+    Also, the model is quite versatile when it comes to its use case. For
     \textbf{classification}, we predict labels by majority voting and for
     \textbf{regression} we predict labels by averaging.
 
@@ -89,16 +89,16 @@ Nearest neighbor methods apply to data sets with points in \(\mathds{R}^d\).
     \includegraphics[width=7.5cm]{20nn.png}
     \caption{kNN classification when \(k\) (nearest neighbors to include) = 1 (left) and 20 (right)}
   \end{figure}
-  When observing Figure 1, there are a few interest things to note. 
+  When observing Figure 1, there are a few interesting things to note. 
   \begin{itemize}
     \item When \(k = 1\), the classifications are very specific to each data point
     and have small pockets of different classes within larger regions. 
     \item When \(k = 20\), the decision boundary is more flexible and ends up misclassifying
     some data points.
-    \begin{quote}
+    \todo{
       Question for TA: Is this necessarily good or bad? Is it possible this data
-      is just noisy and with \(k = 20\) it's actually able to ``ignore'' the noise.
-    \end{quote}
+      is just noisy and with \(k = 20\) it's able to ``ignore'' the noise?
+    }
     \begin{quote}
       Note to self: Might be helpful to try re-creating some of these plots to get a
       better intuition.
@@ -114,10 +114,18 @@ The following are challenges faced when using the kNN methods.
   there are many other possibilities. Euclidean distance makes sense
   when each of the features is \textbf{roughly on the same scale}.
 
-  \todo{Ask TA about formula when using feature vectors.}
+  \todo{Ask TA about the formula when using feature vectors.}
+
+  To correct for this, feature vectors are often recentered around their means
+  and scaled by the standard deviation over the training set.
+  
+  \todo{Ask TA about this too.}
 
   \item How do we pick the right value for \(k\)?
-  \item What if the nearest neighbor is really far away?
-\end{itemize}
 
+  If the value we pick is too small, then the algorithm estimates will focus
+  too much on noise. If the value we pick is too large, then the accuracy will suffer.
+
+  \item What if the nearest neighbor is far away?
+\end{itemize}
 \end{document}

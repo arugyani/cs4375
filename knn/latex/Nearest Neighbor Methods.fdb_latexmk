@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1709242170 "/Users/arugyani/Documents/notes/machine learning/knn/latex/Nearest Neighbor Methods.tex" "Nearest Neighbor Methods.pdf" "Nearest Neighbor Methods" 1709242171 0
-  "/Users/arugyani/Documents/notes/machine learning/knn/latex/Nearest Neighbor Methods.tex" 1709242170 5208 67d733a4bb99bd3c05f42bee6b84436a ""
-  "/dev/null" 1709242171 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1709242958 "/Users/arugyani/Documents/notes/machine learning/knn/latex/Nearest Neighbor Methods.tex" "Nearest Neighbor Methods.pdf" "Nearest Neighbor Methods" 1709242958 0
+  "/Users/arugyani/Documents/notes/machine learning/knn/latex/Nearest Neighbor Methods.tex" 1709242957 5522 f3cfd8ff33f04815b566fe3657805e80 ""
+  "/dev/null" 1709242957 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -164,10 +164,10 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1708499204 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1708499105 7883463 f7331905dfc5ef823a0619cc6b56b37b ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "Nearest Neighbor Methods.aux" 1709242171 1542 db7256be30e8b956ec4d56206129a40c "pdflatex"
-  "Nearest Neighbor Methods.out" 1709242171 778 47f087ebf030f3a5ba8e8e38e4d71943 "pdflatex"
-  "Nearest Neighbor Methods.tex" 1709242170 5208 67d733a4bb99bd3c05f42bee6b84436a ""
-  "Nearest Neighbor Methods.toc" 1709242171 465 78955e5f00d9460b6df87721d9e563ee "pdflatex"
+  "Nearest Neighbor Methods.aux" 1709242958 1542 092aa09450d15c4f24040f11a5a6a522 "pdflatex"
+  "Nearest Neighbor Methods.out" 1709242958 778 47f087ebf030f3a5ba8e8e38e4d71943 "pdflatex"
+  "Nearest Neighbor Methods.tex" 1709242957 5522 f3cfd8ff33f04815b566fe3657805e80 ""
+  "Nearest Neighbor Methods.toc" 1709242958 465 78955e5f00d9460b6df87721d9e563ee "pdflatex"
   "images//1nn.png" 1709234974 841704 05eb156863d8819bde0a56cea14a7b9f ""
   "images//20nn.png" 1709235168 795378 448bc4ccba1c2b27b7b1cfef89fd4372 ""
   (generated)
