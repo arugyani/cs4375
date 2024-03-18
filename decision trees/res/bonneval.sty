@@ -1,0 +1,1197 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{bonneval}
+
+% -------------   Textes   -------------
+
+\newcommand{\texteIndexDesResultats}{Index des résultats}
+\newcommand{\texteIndexDesDefinitions}{Index des définitions}
+\newcommand{\texteTheoreme}{Théorème}
+\newcommand{\texteProposition}{Proposition}
+\newcommand{\textePropriete}{Propriété}
+\newcommand{\texteLemme}{Lemme}
+\newcommand{\texteClaim}{Claim}
+\newcommand{\texteCorollaire}{Corollaire}
+\newcommand{\texteResultat}{Résultat}
+\newcommand{\texteFait}{Fait}
+\newcommand{\texteConjecture}{Conjecture}
+\newcommand{\texteHypothese}{Hypothèse}
+\newcommand{\texteDefinition}{Définition}
+\newcommand{\texteNotation}{Notation}
+\newcommand{\texteExemple}{Exemple}
+\newcommand{\texteExercice}{Exercice}
+\newcommand{\texteApplication}{Application}
+\newcommand{\texteRemarque}{Remarque}
+\newcommand{\texteQuestion}{Question}
+\newcommand{\texteTheoremes}{Théorèmes}
+\newcommand{\textePropositions}{Propositions}
+\newcommand{\texteProprietes}{Propriétés}
+\newcommand{\texteLemmes}{Lemmes}
+\newcommand{\texteClaims}{Claims}
+\newcommand{\texteCorollaires}{Corollaires}
+\newcommand{\texteResultats}{Résultats}
+\newcommand{\texteFaits}{Faits}
+\newcommand{\texteConjectures}{Conjectures}
+\newcommand{\texteHypotheses}{Hypothèses}
+\newcommand{\texteDefinitions}{Définitions}
+\newcommand{\texteNotations}{Notations}
+\newcommand{\texteExemples}{Exemples}
+\newcommand{\texteExercices}{Exercices}
+\newcommand{\texteApplications}{Applications}
+\newcommand{\texteRemarques}{Remarques}
+\newcommand{\texteQuestions}{Questions}
+\newcommand{\textePreuveDuResultat}{Preuve du}
+\newcommand{\textePreuve}{Preuve}
+
+\newcommand{\texteTableDesMatieres}{Table des matières}
+
+\RequirePackage{lcg}	% Pour avoir du random
+\reinitrand[first=1, last=8, counter=aleat, seed=-1, quiet=y]
+\newcommand{\findepreuve}{{\small{\rand\ifnum\value{aleat}<3{cskifo}\else\ifnum\value{aleat}=3{C'est ce que je voulais !}\else\ifnum\value{aleat}<6{Youpi !}\else\ifnum\value{aleat}<8{Voilà !}\else{Et là c'est le plus beau jour de ma vie.}\fi\fi\fi\fi}}}
+
+\newcommand\bnvlValeurTitre{}
+\newcommand\bnvlValeurTitreCourt{}
+\newcommand\bnvlValeurAuteur{}
+\newcommand\bnvlValeurAuteurCourt{}
+\newcommand\bnvlValeurAffiliation{}
+\newcommand\bnvlValeurDate{}
+\newcommand{\bnvlTitre}[2][]{
+  \ifx&#1&
+    \def\bnvlValeurTitreCourt{#2}
+  \else
+    \def\bnvlValeurTitreCourt{#1}
+  \fi
+  \def\bnvlValeurTitre{#2}
+}
+\newcommand{\bnvlAuteur}[2][]{
+  \ifx&#1&
+    \def\bnvlValeurAuteurCourt{#2}
+  \else
+    \def\bnvlValeurAuteurCourt{#1}
+  \fi
+  \def\bnvlValeurAuteur{#2}
+}
+\newcommand{\bnvlAffiliation}[1]{\def\bnvlValeurAffiliation{#1}}
+\newcommand{\bnvlDate}[1]{\def\bnvlValeurDate{#1}}
+\newcommand{\nomsection}{}
+\newcommand{\commandevide}{}
+
+% -------------   Couleurs   -------------
+
+\RequirePackage{xcolor}
+
+\definecolor{rougesombre}{RGB}{177, 0, 0}
+\definecolor{rouge}{RGB}{205, 0, 0}
+\definecolor{bleu}{RGB}{0,0,180}
+\definecolor{bleusombre}{RGB}{0,0,54}
+\definecolor{vertsombre}{RGB}{0,54,0}
+\definecolor{vert}{RGB}{0,160,0}
+\definecolor{Cyan}{RGB}{113, 218, 187}
+\definecolor{Orange}{RGB}{255,153,51}
+\definecolor{orangesombre}{RGB}{204,102,0}
+\definecolor{Rose}{RGB}{205,102,102}
+\definecolor{rosesombre}{RGB}{153,0,76}
+\definecolor{gris}{RGB}{229, 204,255}
+\definecolor{mauve}{RGB}{204, 153,255}
+
+\definecolor{vertsympa}{HTML}{7AA95C}
+\definecolor{rougesympa}{HTML}{A7001E}
+
+%\definecolor{bnvlCouleurSection}{RGB}{240,170,30}
+%\definecolor{bnvlCouleurSection}{HTML}{E1A624}
+\definecolor{bnvlCouleurSection}{HTML}{538FA7}
+\definecolor{bnvlFondBandeau}{HTML}{538FA7}
+%\definecolor{couleurtheoreme}{RGB}{180, 0, 0}
+\definecolor{couleurtheoreme}{HTML}{ED2329}
+\definecolor{couleurproposition}{RGB}{220,80,0}
+\definecolor{couleurlemme}{RGB}{160,100,0}
+\definecolor{couleurconjecture}{RGB}{240,130,70}
+%\definecolor{couleurdefinition}{RGB}{10,10,220}
+\definecolor{couleurdefinition}{HTML}{11296F}
+%\definecolor{couleurexemple}{RGB}{0,150,0}
+\definecolor{couleurexemple}{HTML}{84A324}
+\definecolor{couleurremarque}{RGB}{140,0,130}
+
+
+\definecolor{bnvlSectionColor}{HTML}{538FA7}
+\definecolor{bnvlSidebarColor}{HTML}{538FA7}
+\definecolor{bnvlTheoremColor}{HTML}{ED2329}
+\definecolor{bnvlPropositionColor}{RGB}{220,80,0}
+\definecolor{bnvlLemmaColor}{RGB}{160,100,0}
+\definecolor{bnvlConjectureColor}{RGB}{240,130,70}
+\definecolor{bnvlDefinitionColor}{HTML}{11296F}
+\definecolor{bnvlExampleColor}{HTML}{84A324}
+\definecolor{bnvlRemarkColor}{RGB}{140,0,130}
+
+
+\newcommand{\bnvlBandeauBleu}{
+  \definecolor{bnvlCouleurSection}{HTML}{538FA7}
+  \definecolor{bnvlFondBandeau}{HTML}{538FA7}
+}
+\newcommand{\bnvlBandeauBleuVert}{
+  \definecolor{bnvlCouleurSection}{HTML}{53A78F}
+  \definecolor{bnvlFondBandeau}{HTML}{53A78F}
+}
+\newcommand{\bnvlBandeauJaune}{
+  \definecolor{bnvlCouleurSection}{RGB}{240,170,30}
+  \definecolor{bnvlFondBandeau}{RGB}{240,170,30}
+}
+\newcommand{\bnvlBandeauVert}{
+  \definecolor{bnvlCouleurSection}{RGB}{30,140,70}
+  \definecolor{bnvlFondBandeau}{RGB}{30,140,70}
+}
+\newcommand{\bnvlBandeauRouge}{
+  \definecolor{bnvlCouleurSection}{RGB}{210,90,70}
+  \definecolor{bnvlFondBandeau}{RGB}{210,90,70}
+}
+
+
+% -------------   Packages   -------------
+
+\newcommand{\testonestdansunbeamer}{o}
+
+%\hypersetup{colorlinks=true, linkcolor=couleurtheoreme, citecolor=couleurexemple, urlcolor=couleurdefinition}
+
+
+\newcommand{\lienscapitales}{\hypersetup{frenchlinks=true, pdfborder = {0 0 0}}}
+\newcommand{\liensnormaux}{\hypersetup{frenchlinks=false, pdfborder = {0 0 0}}}
+
+\makeatletter
+\@ifclassloaded{beamer}{
+  \RequirePackage{hyperref}
+  \newcommand\labelle[1]{}	% On empêche de créer des labels
+  \newcommand{\onestdansunbeamer}{\testonestdansunbeamer}
+}{	% Si on est pas dans un beamer
+  \@ifclassloaded{standalone}{}{
+    \RequirePackage{bophook}	% Pour exécuter une commande au début de chaque page
+    \RequirePackage{hyperref}	% Après bophook
+    \liensnormaux	% Pour setup les styles de références
+    \RequirePackage{footnote}
+    \RequirePackage{fancyhdr}
+    \RequirePackage[nottoc]{tocbibind}
+    \RequirePackage{marginnote}
+    \RequirePackage{titlesec}
+
+    \RequirePackage[]{imakeidx}
+    \makeindex[name=thm, title=\texteIndexDesResultats, intoc]
+    \makeindex[name=defn, title=\texteIndexDesDefinitions, intoc]
+
+    \newcommand\labelle[1]{\label[\typelabel]{#1}}
+  \newcommand{\onestdansunbeamer}{}
+  }
+}
+\makeatother
+
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{amsmath, amssymb, amsfonts, bbm, dsfont, mathrsfs}
+\RequirePackage{url}
+\RequirePackage[ruled,vlined, frenchkw]{algorithm2e}
+\RequirePackage{ccaption}
+\RequirePackage{graphicx}
+\RequirePackage{calc}	% Pour avoir \widthof
+\RequirePackage{gensymb}
+\RequirePackage{lipsum}
+\RequirePackage{enumitem}
+\RequirePackage{float}
+\RequirePackage{refcount}	% Pour pouvoir utiliser une ref comme nombre
+\RequirePackage{ifthen}
+\RequirePackage{setspace}	% Pour pouvoir donner un interligne au milieu du document
+\RequirePackage{fp}		% Pour pouvoir évaluer des expressions (inutile avec \pgfmath)
+\RequirePackage{lastpage}	% Pour avoir une référence vers la dernière page
+
+%\makesavenoteenv{tabular}
+
+\RequirePackage{iwona}
+%\RequirePackage[default]{cantarell}
+%\RequirePackage{libertinus}
+%\RequirePackage{DejaVuSans}
+%\renewcommand*\familydefault{\sfdefault}
+
+% ---------- Références et labels ----------
+\RequirePackage[noabbrev,nameinlink]{cleveref}	% Pour avoir des références bien écrites
+%\newcommand{\minusculesoupasminusculeshehe}[1]{\MakeLowercase{#1}}
+\newcommand{\minusculesoupasminusculeshehe}[1]{#1}
+\crefname{thm}{\minusculesoupasminusculeshehe{\texteTheoreme}}{\minusculesoupasminusculeshehe{\texteTheoremes}}
+\Crefname{thm}{\texteTheoreme}{\texteTheoremes}
+\crefname{prop}{\minusculesoupasminusculeshehe{\texteProposition}}{\minusculesoupasminusculeshehe{\textePropositions}}
+\Crefname{prop}{\texteProposition}{\textPropositions}
+\crefname{propriete}{\minusculesoupasminusculeshehe{\textePropriete}}{\minusculesoupasminusculeshehe{\texteProprietes}}
+\Crefname{propriete}{\textePropriete}{\textProprietes}
+\crefname{lemme}{\minusculesoupasminusculeshehe{\texteLemme}}{\minusculesoupasminusculeshehe{\texteLemmes}}
+\Crefname{lemme}{\texteLemme}{\texteLemmes}
+\crefname{claim}{\minusculesoupasminusculeshehe{\texteClaim}}{\minusculesoupasminusculeshehe{\texteClaims}}
+\Crefname{claim}{\texteClaims}{\texteClaims}
+\crefname{cor}{\minusculesoupasminusculeshehe{\texteCorollaire}}{\minusculesoupasminusculeshehe{\texteCorollaires}}
+\Crefname{cor}{\texteCorollaire}{\texteCorollaires}
+\crefname{res}{\minusculesoupasminusculeshehe{\texteResultat}}{\minusculesoupasminusculeshehe{\Resultats}}
+\Crefname{res}{\texteResultat}{\texteResultats}
+\crefname{fait}{\minusculesoupasminusculeshehe{\texteFait}}{\minusculesoupasminusculeshehe{\texteFaits}}
+\Crefname{fait}{\texteFait}{\texteFaits}
+\crefname{conjecture}{\minusculesoupasminusculeshehe{\texteConjecture}}{\minusculesoupasminusculeshehe{\texteConjectures}}
+\Crefname{conjecture}{\texteConjecture}{\texteConjectures}
+\crefname{hypothese}{\minusculesoupasminusculeshehe{\texteHypothese}}{\minusculesoupasminusculeshehe{\texteHypotheses}}
+\Crefname{hypothese}{\texteHypothese}{\texteHypotheses}
+\crefname{defn}{\minusculesoupasminusculeshehe{\texteDefinition}}{\minusculesoupasminusculeshehe{\texteDefinitions}}
+\Crefname{defn}{\texteDefinition}{\texteDefinitions}
+\crefname{notation}{\minusculesoupasminusculeshehe{\texteNotation}}{\minusculesoupasminusculeshehe{\texteNotations}}
+\Crefname{notation}{\texteNotation}{\texteNotations}
+\crefname{ex}{\minusculesoupasminusculeshehe{\texteExemple}}{\minusculesoupasminusculeshehe{\texteExemples}}
+\Crefname{ex}{\texteExemple}{\texteExemples}
+\crefname{exo}{\minusculesoupasminusculeshehe{\texteExercice}}{\minusculesoupasminusculeshehe{\texteExercices}}
+\Crefname{exo}{\texteExercice}{\texteExercices}
+\crefname{rk}{\minusculesoupasminusculeshehe{\texteRemarque}}{\minusculesoupasminusculeshehe{\texteRemarques}}
+\Crefname{rk}{\texteRemarque}{\texteRemarques}
+\crefname{question}{\minusculesoupasminusculeshehe{\texteQuestion}}{\minusculesoupasminusculeshehe{\texteQuestions}}
+\Crefname{question}{\texteQuestion}{\texteQuestions}
+% \crefname{}{\minusculesoupasminusculeshehe{\texte}}{\minusculesoupasminusculeshehe{\texte s}}
+% \Crefname{}{\texte}{\texte s}
+
+\RequirePackage[many]{tcolorbox}
+\tcbuselibrary{breakable, skins}
+
+\RequirePackage{pgf,tikz}
+\usetikzlibrary{arrows, calc, arrows.meta, backgrounds}
+\usetikzlibrary{shapes.callouts, shapes.symbols, shapes.multipart, shapes.misc, shapes.geometric, decorations.pathreplacing,decorations.pathmorphing, calligraphy}
+\tcbuselibrary{skins}
+\tikzstyle{f}=[->,>=stealth,draw]
+\tikzstyle{ellipse}=[draw, shape=ellipse]
+
+\tikzset{
+    every node/.style={
+        anchor=center
+    },
+}
+
+\RequirePackage{environ}	% Pour pouvoir faire des environnements et récupérer le contenu par une commande
+
+\title{\bnvlValeurTitre}
+\author{\bnvlValeurAuteur}
+\date{\bnvlValeurDate}
+
+\RequirePackage{datetime}
+
+
+% ---------- Style de page ----------
+
+\newlength{\largeurchiante}
+\newcommand{\textechiant}{1234567890BPOVDLJZWAUIECTSRNMYXKQGHFpqgÉÇ()}
+\newcommand{\corrigertitrechiant}{\settowidth{\largeurchiante}{\textechiant}\phantom{\textechiant}\hspace*{-\largeurchiante}}
+\newcommand{\corrigermathschiantes}{\settowidth{\largeurchiante}{$\displaystyle \sum$}$\phantom{\displaystyle \sum$}\hspace*{-\largeurchiante}}
+\newcommand{\corrigergrossesmathschiantes}{\settowidth{\largeurchiante}{$\displaystyle \sum$}\phantom{$\displaystyle \sum^n_n$}\hspace*{-\largeurchiante}}
+
+
+\newcommand{\dernierepageref}{LastPage}
+% \lhead{\bnvlValeurTitreCourt}
+% \rhead{\bnvlValeurAuteurCourt}
+% \cfoot{\thepage}
+
+% Pour avoir le nom de la section courante
+\makeatletter
+\@ifclassloaded{beamer}{}{
+  \@ifclassloaded{standalone}{}{
+    \let\Sectionmark\sectionmark
+    \def\sectionmark#1{\def\Sectionname{#1}\Sectionmark{#1}}
+    % \addtocounter{page}{-1}
+    \newcounter{pagestotal}
+    \newcounter{compteurnul}
+    \newlength{\taillescrollbar}
+    \newlength{\taillepagemoinsscrollbar}
+    \newcommand{\totalpages}{\thepagestotal}
+    \newcommand{\pageactuelle}{\thepage}
+
+    % \addtocounter{page}{1}
+
+    \newcommand{\bnvlBandeauEcartTextes}{8mm}
+    \newcommand{\bnvlBandeauInclinaisonBarre}{1.5mm}
+
+    \AtBeginPage{
+      \begin{tikzpicture}[remember picture, overlay]%
+        \coordinate (bandenordest) at ($(current page.north west) + (9.3mm,0)$);
+        \coordinate (bandesudest) at ($(current page.south west) + (9.3mm,0)$);
+        \fill [bnvlFondBandeau] (current page.south west) rectangle (bandenordest);%
+        \node [below right, inner sep=0mm, outer sep=0mm] (titre) at ($(current page.north west) + (2mm,-5mm)$) {\rotatebox{-90}{\hyperlink{page.1}{\Large\bnvlValeurTitreCourt\corrigertitrechiant}}};%
+        % -- Afficher la section s'il y a lieu --
+        \ifx\commandevide\nomsection\else%
+          \fill let \p1=(bandesudest), \p2=(titre.south), \p3=(current page.south west) in [bnvlFondBandeau!75] (\p1) to (\x1,\y2-0.5*\bnvlBandeauEcartTextes + \bnvlBandeauInclinaisonBarre) to (\x3,\y2-0.5*\bnvlBandeauEcartTextes - \bnvlBandeauInclinaisonBarre) to (\p3) to cycle;%
+          \node [inner sep=0mm, outer sep=0mm, below right] (titre) at ($(titre.south west) + (0,-\bnvlBandeauEcartTextes)$) {\rotatebox{-90}{\hyperlink{section.\thesection}{\Large\nomsection\corrigertitrechiant}}};%
+        \fi%
+          \fill let \p1=(bandesudest), \p2=(titre.south), \p3=(current page.south west) in [bnvlFondBandeau!50] (\p1) to (\x1,\y2-0.5*\bnvlBandeauEcartTextes + \bnvlBandeauInclinaisonBarre) to (\x3,\y2-0.5*\bnvlBandeauEcartTextes - \bnvlBandeauInclinaisonBarre) to (\p3) to cycle;%
+        \node [inner sep=0mm, outer sep=0mm, below right] at ($(titre.south west) + (0,-\bnvlBandeauEcartTextes)$) {\rotatebox{-90}{\hyperlink{section.\thesection}{\Large\bnvlValeurAuteurCourt\corrigertitrechiant}}};%
+        \node [above, inner sep=0mm, outer sep=0mm] at ($(current page.south west) + (4.5mm,3mm)$) {$\displaystyle \frac{\text{\thepage}}{\text{\getpagerefnumber{\dernierepageref}}}$};
+      \end{tikzpicture}
+    }
+        % % On vire les bordures
+        % \hypersetup{pdfborder = {0 0 0}}
+        % \ifnum\thepage>0
+        % \setcounter{pagestotal}{\getpagerefnumber{LastPage}}
+        % \setlength{\taillescrollbar}{\paperheight/\thepagestotal}
+        % \setlength{\taillepagemoinsscrollbar}{\paperheight}
+        % \addtolength{\taillepagemoinsscrollbar}{-\taillescrollbar}
+        % % \addtocounter{pagestotal}{-1}
+        % \begin{tikzpicture}[remember picture, overlay]
+        %   \node [below right, inner sep=0mm, outer sep=0mm] (titre) at ($(current page.north west) + (2mm,-5mm)$) {\rotatebox{-90}{\hyperlink{page.1}{\Large\bnvlValeurTitreCourt\corrigertitrechiant}}};
+        %   \ifx\commandevide\nomsection\else
+        %   \draw [bnvlCouleurSection, line width=0.5mm] ($(titre.south east) + (0,-5mm)$) to ($(titre.south west) + (0,-5mm)$);
+        %   \node [inner sep=0mm, outer sep=0mm, below right] (titre) at ($(titre.south west) + (0,-10mm)$) {\rotatebox{-90}{\hyperlink{section.\thesection}{\Large\nomsection\corrigertitrechiant}}};
+        %   \fi
+        %   \node [inner sep=0mm, outer sep=0mm, below right] (auteur) at ($(titre.south west) + (0,-10mm)$) {\rotatebox{-90}{\Large\bnvlValeurAuteurCourt\corrigertitrechiant}};
+        %   \draw [bnvlCouleurSection, line width=0.5mm] ($(titre.south east) + (0,-5mm)$) to ($(titre.south west) + (0,-5mm)$);
+        %   % \draw [line width=0.5mm] ($(auteur.south west) + (-1mm,5mm)$) to ($(auteur.north west) + (2mm,5mm)$) to ($(auteur.north east) + (2mm,-4mm)$);
+        %   \node [above, inner sep=0mm, outer sep=0mm] (page) at ($(current page.south west) + (5mm,3mm)$) {\large $\displaystyle \frac{\text{\thepage}}{\text{\getpagerefnumber{\dernierepageref}}}$};
+        %   % \node [fill=bnvlCouleurSection!10, inner sep=0mm, outer sep=0mm, above right] (page) at ($(current page.south west) + (5mm,5mm)$) {\large\thepage/\getpagerefnumber{\dernierepageref}};
+        %   \draw let \p1=($(titre.north east) + (2.5mm,20cm)$), \p2=(current page.south west) in [bnvlCouleurSection, line width=0.5mm] (\p1) to (\x1,\y2);
+        %   \begin{scope}[on background layer]
+        %     \fill let \p1=($(titre.north east) + (2.5mm,20cm)$), \p2=(current page.south west) in [bnvlCouleurSection!10] (\p1) to (\x1,\y2) to (\p2) to (current page.north west) to cycle;
+        %     %\fill [bnvlCouleurSection!10] ($(page.north west) + (-5mm,5mm)$) -| ($(page.south east) + (5mm,-5mm)$) -| cycle;
+        %   \end{scope}
+        %   \setcounter{compteurnul}{0}
+        %   \ifnum\totalpages>0
+        %   \foreach \i in {0,...,\totalpages}{
+        %     \stepcounter{compteurnul}
+        %     \node [right] at ($(current page.north east) - (4mm,\taillepagemoinsscrollbar/\totalpages/2) - (0,{\i/max(\totalpages-1, 1)*\taillepagemoinsscrollbar})$) {\hyperlink{page.\thecompteurnul}{\phantom{\fbox{\tikz \path (0,0) to (0,\taillescrollbar*0.8);}}}};
+        %   }
+        %   \fi
+        %   \addtocounter{page}{-1}
+        %   \draw [bnvlCouleurSection, line width=1mm] ($(current page.north east) + (-0.5mm,0) - (0,{\thepage/max(\totalpages-1,1)*\taillepagemoinsscrollbar})$) to + (0,-\taillescrollbar);
+        %   \addtocounter{page}{1}
+        % \end{tikzpicture}
+        % \fi
+        % % On remet les bordures des liens
+        % \hypersetup{pdfborder = {0 0 1}}
+
+      % % On vire les bordures
+      % % \hypersetup{pdfborder = {0 0 0}}
+      % \ifnum\thepage>0
+      %   \setcounter{pagestotal}{\getpagerefnumber{LastPage}}
+      %   \setlength{\taillescrollbar}{\paperheight/\thepagestotal}
+      %   \setlength{\taillepagemoinsscrollbar}{\paperheight}
+      %   \addtolength{\taillepagemoinsscrollbar}{-\taillescrollbar}
+      %   % \addtocounter{pagestotal}{-1}
+      %   \begin{tikzpicture}[remember picture, overlay]
+      %     \node [below right, inner sep=0mm, outer sep=0mm] (titre) at ($(current page.north west) + (2mm,-5mm)$) {\rotatebox{-90}{\hyperlink{page.1}{\Large\bnvlValeurTitreCourt\corrigertitrechiant}}};
+
+      %     \ifx\commandevide\nomsection\else
+      %       \draw [bnvlCouleurSection, line width=0.5mm] ($(titre.south east) + (0,-5mm)$) to ($(titre.south west) + (0,-5mm)$);
+      %       \node [inner sep=0mm, outer sep=0mm, below right] (titre) at ($(titre.south west) + (0,-10mm)$) {\rotatebox{-90}{\hyperlink{section.\thesection}{\Large\nomsection\corrigertitrechiant}}};
+      %     \fi
+
+      %     \node [inner sep=0mm, outer sep=0mm, below right] (auteur) at ($(titre.south west) + (0,-10mm)$) {\rotatebox{-90}{\Large\bnvlValeurAuteurCourt\corrigertitrechiant}};
+      %     \draw [bnvlCouleurSection, line width=0.5mm] ($(titre.south east) + (0,-5mm)$) to ($(titre.south west) + (0,-5mm)$);
+      %     % \draw [line width=0.5mm] ($(auteur.south west) + (-1mm,5mm)$) to ($(auteur.north west) + (2mm,5mm)$) to ($(auteur.north east) + (2mm,-4mm)$);
+      %     \node [above, inner sep=0mm, outer sep=0mm] (page) at ($(current page.south west) + (5mm,3mm)$) {\large $\displaystyle \frac{\text{\thepage}}{\text{\getpagerefnumber{\dernierepageref}}}$};
+      %     % \node [fill=bnvlCouleurSection!10, inner sep=0mm, outer sep=0mm, above right] (page) at ($(current page.south west) + (5mm,5mm)$) {\large\thepage/\getpagerefnumber{\dernierepageref}};
+      %     \draw let \p1=($(titre.north east) + (2.5mm,20cm)$), \p2=(current page.south west) in [bnvlCouleurSection, line width=0.5mm] (\p1) to (\x1,\y2);
+      %     \begin{scope}[on background layer]
+      %       \fill let \p1=($(titre.north east) + (2.5mm,20cm)$), \p2=(current page.south west) in [bnvlCouleurSection!10] (\p1) to (\x1,\y2) to (\p2) to (current page.north west) to cycle;
+      %       % \fill [bnvlCouleurSection!10] ($(page.north west) + (-5mm,5mm)$) -| ($(page.south east) + (5mm,-5mm)$) -| cycle;
+      %     \end{scope}
+
+      %     % -- BARRE DE DÉFILEMENT À DROITE --
+
+      %     \setcounter{compteurnul}{0}
+      %     \ifnum\totalpages>0
+      %       \foreach \i in {0,...,\totalpages}{
+      %         \stepcounter{compteurnul}
+      %         \node [right] at ($(current page.north east) - (4mm,\taillepagemoinsscrollbar/\totalpages/2) - (0,{\i/max(\totalpages-1, 1)*\taillepagemoinsscrollbar})$) {\hyperlink{page.\thecompteurnul}{\phantom{\fbox{\tikz \path (0,0) to (0,\taillescrollbar*0.8);}}}};
+      %       }
+      %     \fi
+      %     \addtocounter{page}{-1}
+      %     \draw [bnvlCouleurSection, line width=1mm] ($(current page.north east) + (-0.5mm,0) - (0,{\thepage/max(\totalpages-1,1)*\taillepagemoinsscrollbar})$) to + (0,-\taillescrollbar);
+      %     \addtocounter{page}{1}
+      %   \end{tikzpicture}
+      % \fi
+      % % On remet les bordures des liens
+      % %\hypersetup{pdfborder = {0 0 1}}
+  }
+}
+\makeatother
+
+
+% Pour autoriser les align de casser entre les pages
+\allowdisplaybreaks
+
+% ---------- Page à bonne taille ----------
+\newlength{\taillecool}
+\NewEnviron{PageALaTaille}[1][]{
+  \BODY
+}
+
+
+% ---------- Options ----------
+
+\DeclareOption{unepage}{
+  \geometry{paperheight=500cm}
+
+  \RenewEnviron{PageALaTaille}[1][]{
+    \settoheight{\taillecool}{\begin{tikzpicture}\node[draw]{\begin{minipage}{\linewidth}\BODY\vspace*{3cm}\end{minipage}};\end{tikzpicture}}
+    #1
+    \pdfpageheight=\taillecool
+    \BODY
+    \eject
+  }
+
+  \renewcommand{\tableofcontents}{}
+
+  \makeatletter
+  \let\Sectionmark\sectionmark
+  \def\sectionmark#1{\def\Sectionname{#1}\Sectionmark{#1}}
+  % \addtocounter{page}{-1}
+
+  \fancypagestyle{plain}{
+    \fancyhead[L]{
+      % \addtocounter{pagestotal}{-1}
+      \begin{tikzpicture}[remember picture, overlay]
+        \node [rotate=-90, anchor=south east, inner sep=0mm, outer sep=0mm, left] (auteur) at ($(current page.south west) + (5mm,5mm)$) {\Large\bnvlValeurAuteurCourt\corrigertitrechiant};
+        \node [rotate=-90, anchor=south west, inner sep=0mm, outer sep=0mm, above left] (titre) at ($(auteur.south west) + (0,10mm)$) {\Large\bnvlValeurTitreCourt\corrigertitrechiant};
+        \draw [bnvlCouleurSection, line width=0.5mm] ($(titre.north east) + (0,-5mm)$) to ($(titre.south east) + (0,-5mm)$);
+        % \draw [line width=0.5mm] ($(auteur.south west) + (-1mm,5mm)$) to ($(auteur.north west) + (2mm,5mm)$) to ($(auteur.north east) + (2mm,-4mm)$);
+        \begin{scope}[on background layer]
+          \draw let \p1=($(auteur.north east) + (2.5mm,-8mm)$) in [bnvlCouleurSection, fill=bnvlCouleurSection!10, line width=0.5mm] (\p1) rectangle + (-2cm,500cm);
+        \end{scope}
+        \foreach \repet in {0,1,...,20} {
+          \node [rotate=-90, anchor=south east, inner sep=0mm, outer sep=0mm, above left] (auteur) at ($(titre.south west) + (0,15cm)$) {\Large\bnvlValeurAuteurCourt\corrigertitrechiant};
+          \node [rotate=-90, anchor=south west, inner sep=0mm, outer sep=0mm, above left] (titre) at ($(auteur.south west) + (0,10mm)$) {\Large\bnvlValeurTitreCourt\corrigertitrechiant};
+          \draw [bnvlCouleurSection, line width=0.5mm] ($(titre.north east) + (0,-5mm)$) to ($(titre.south east) + (0,-5mm)$);
+        }
+      \end{tikzpicture}
+    }
+
+    \fancyhead[R,C]{}
+    \fancyfoot{}
+    \renewcommand{\headrulewidth}{0pt}
+  }
+  \pagestyle{plain}
+  \makeatother
+}
+\DeclareOption{blue}{
+  \definecolor{bnvlSectionColor}{HTML}{538FA7}
+  \definecolor{bnvlSidebarColor}{HTML}{538FA7}
+}
+\DeclareOption{teal}{
+  \definecolor{bnvlSectionColor}{HTML}{53A78F}
+  \definecolor{bnvlSidebarColor}{HTML}{53A78F}
+}
+\DeclareOption{yellow}{
+  \definecolor{bnvlSectionColor}{RGB}{240,170,30}
+  \definecolor{bnvlSidebarColor}{RGB}{240,170,30}
+}
+\DeclareOption{green}{
+  \definecolor{bnvlSectionColor}{RGB}{30,140,70}
+  \definecolor{bnvlSidebarColor}{RGB}{30,140,70}
+}
+\DeclareOption{red}{
+  \definecolor{bnvlSectionColor}{RGB}{210,90,70}
+  \definecolor{bnvlSidebarColor}{RGB}{210,90,70}
+}
+
+
+%\ExecuteOptions
+\DeclareOption{english}{
+\renewcommand{\texteIndexDesResultats}{Index of results}
+\renewcommand{\texteIndexDesDefinitions}{Index of definitions}
+\renewcommand{\texteRemarque}{Remark}
+\renewcommand{\texteQuestion}{Question}
+\renewcommand{\texteTheoreme}{Theorem}
+\renewcommand{\texteProposition}{Proposition}
+\renewcommand{\textePropriete}{Property}
+\renewcommand{\texteLemme}{Lemma}
+\renewcommand{\texteCorollaire}{Corollary}
+\renewcommand{\texteResultat}{Result}
+\renewcommand{\texteFait}{Fact}
+\renewcommand{\texteConjecture}{Conjecture}
+\renewcommand{\texteHypothese}{Hypothesis}
+\renewcommand{\texteDefinition}{Definition}
+\renewcommand{\texteNotation}{Notation}
+\renewcommand{\texteExemple}{Example}
+\renewcommand{\texteExercice}{Exercise}
+\renewcommand{\texteRemarques}{Remarks}
+\renewcommand{\texteQuestions}{Questions}
+\renewcommand{\texteTheoremes}{Theorems}
+\renewcommand{\textePropositions}{Propositions}
+\renewcommand{\texteProprietes}{Properties}
+\renewcommand{\texteLemmes}{Lemmas}
+\renewcommand{\texteCorollaires}{Corollaries}
+\renewcommand{\texteResultats}{Results}
+\renewcommand{\texteFaits}{Facts}
+\renewcommand{\texteConjectures}{Conjectures}
+\renewcommand{\texteHypotheses}{Hypotheses}
+\renewcommand{\texteDefinitions}{Definitions}
+\renewcommand{\texteNotations}{Notations}
+\renewcommand{\texteExemples}{Examples}
+\renewcommand{\texteExercices}{Exercises}
+\renewcommand{\textePreuveDuResultat}{Proof of}
+\renewcommand{\textePreuve}{Proof}
+
+% \renewcommand{\findepreuve}{QED}
+
+\renewcommand*\contentsname{Summary}
+}
+%\DeclareStringOption[valeur si option non utilisée]{nom option}[valeur par défaut]{code}
+\DeclareOption*{\PackageWarning{bonneval}{Unknown '\CurrentOption'}}
+\ProcessOptions
+
+
+
+% ---------- Notes de côté de page ----------
+\newcommand{\notedecote}[1]{%
+  \refstepcounter{footnote}%
+  $^\text{\ref{note:\thefootnote}}$%
+  \marginpar{%
+    \label{note:\thefootnote}%
+    \begin{tikzpicture}
+      \node [draw=couleurremarque, fill=couleurremarque!7, line width=0.4mm] {
+        \begin{minipage}{\linewidth}
+          \footnotesize\thefootnote. #1
+        \end{minipage}};
+    \end{tikzpicture}
+  }
+}
+
+
+% ---------- Table des matières ----------
+%\bibliographystyle{/home/hugo/ownCloud/Documents/bibliostyle}
+\bibliographystyle{alpha}
+
+% ---------- Nouveaux titres ----------
+
+\newcommand{\ecriretitre}[3]{
+  \settowidth{\largeurtextetitre}{#2 \textbf{#1}}
+  \pgfmathsetlength{\largeurtitre}{min(\linewidth - 11.8mm - \largeurtextenumero,\largeurtextetitre)}
+  \begin{center}
+    \begin{tikzpicture}
+      \node [inner sep=2mm] (t) {\begin{minipage}{\largeurtitre}\centering#2 \textbf{#1}\end{minipage}};
+      \draw [line width=#3, bnvlCouleurSection] (t.south west) to (t.south east);
+    \end{tikzpicture}
+  \end{center}
+}
+
+\newcommand{\fairetitre}{
+  \vspace{5mm}
+  \ifx\commandevide\bnvlValeurTitre\else\ecriretitre{\bnvlValeurTitre}{\huge}{2mm}\fi
+  \ifx\commandevide\bnvlValeurAuteur\else\ecriretitre{\bnvlValeurAuteur}{\Large}{1mm}\fi
+  \ifx\commandevide\bnvlValeurAffiliation\else\ecriretitre{\bnvlValeurAffiliation}{\large}{0.8mm}\fi
+  \ifx\commandevide\bnvlValeurDate\else\ecriretitre{\bnvlValeurDate}{\large}{0.8mm}\fi
+}
+
+\makeatletter
+\@ifclassloaded{beamer}{
+
+}{
+  \@ifclassloaded{standalone}{}{
+    \titleformat{\section}{\vspace*{5mm}\bfseries\huge}{\quad}{}{}{}{}
+  }
+}
+
+\newtcolorbox{testsexionbox}[1][]{%
+  enhanced,
+  skin=bicolor,
+  colback=bnvlCouleurSection,
+  valign=center,
+  sharp corners,
+  opacityframe=0,
+  sidebyside,
+  lower separated=true,
+  sharp corners,
+  boxrule=0mm,
+  borderline south={1mm}{0pt}{bnvlCouleurSection},
+  %lefthand width=5mm,
+  colbacklower=white,
+  #1
+}
+
+\newlength{\largeurnumero}
+\newcommand{\testsexion}[1]{
+  \settoheight{\hauteurtitre}{\fbox{\huge{1SAp}}}
+  \settowidth{\largeurnumero}{\hspace*{-2mm}\huge\thesection}
+  \begin{testsexionbox}[lefthand width=\largeurnumero]
+    \huge
+    \centering
+    \hspace*{-1mm}\textbf{\thesection}\hspace*{-1mm}
+    \tcblower
+    \huge
+    \textbf{#1}
+  \end{testsexionbox}
+}
+\newlength{\hauteurtitre}
+\newlength{\largeurtitre}
+\setlength{\largeurtitre}{10cm}
+\newlength{\largeurtextetitre}
+\newlength{\largeurtextenumero}
+\newcommand{\vieuxsexionmaison}[3]{%
+  \settowidth{\largeurtextetitre}{\textbf{#1}}%
+  \settowidth{\largeurtextenumero}{\textbf{#2}}%
+  \pgfmathsetlength{\largeurtitre}{min(\linewidth - 11.8mm - \largeurtextenumero,\largeurtextetitre)}%
+  \par\bigskip
+  \noindent
+  % \begin{tikzpicture}[every node/.style={line width=0, text height=\hauteurtitre, text depth=\hauteurtitre/4}]
+  \begin{tikzpicture}[every node/.style={inner sep=2mm}]
+    \node [text=black, minimum height=\hauteurtitre] (entier) {\hspace*{1mm}\begin{minipage}{\largeurtitre}\setstretch{#3}\textbf{#1}\end{minipage}};
+    \node [text=black, thick, below left] (numero) at (entier.north west) {\hspace*{1mm}\textbf{#2}\hspace*{1mm}};
+    \begin{scope}[on background layer]
+      \fill [bnvlCouleurSection] let \p1=(numero.south west), \p2=(numero.south east), \p3=(entier.south east) in (numero.north east) rectangle (\x1,\y3+0.1mm) rectangle (\x3,\y3 -#3/1.7*0.9mm);
+    \end{scope}
+    % \begin{scope}[on background layer]
+    %   \clip let \p1=(numero.south east), \p2=(entier.south east) in (\x1-0.1mm,\y1) rectangle (\x2,\y2+0.9mm);
+    %   \filldraw [left color=bnvlCouleurSection, right color=bnvlFondBandeau!25, draw=bnvlCouleurSection!50, line width=0] let \p1=(numero.south east), \p2=(entier.south east) in (\x1-0.1mm,\y1-0.1mm) rectangle (\x1+\linewidth-11mm-\largeurtextenumero,\y2+1mm);
+    % \end{scope}
+  \end{tikzpicture}
+
+  \medskip\nopagebreak[3]}
+
+\newcommand{\sexionmaison}[3]{%
+  \settowidth{\largeurtextetitre}{\textbf{#1}}
+  \settowidth{\largeurtextenumero}{\textbf{#2}}
+  \pgfmathsetlength{\largeurtitre}{min(\linewidth - 11.8mm - \largeurtextenumero,\largeurtextetitre)}
+  \par\bigskip
+  \noindent
+  \begin{tikzpicture}[every node/.style={inner sep=2mm}]
+    % \node [text=black, minimum height=\hauteurtitre] (entier) {\hspace*{1mm}\begin{minipage}{\largeurtitre}\setstretch{#3}\textbf{#1}\end{minipage}};
+    % \node [text=black, thick, below left] (numero) at (entier.north west) {\hspace*{1mm}\textbf{#2}\hspace*{1mm}};
+    % \begin{scope}[on background layer]
+    %   \fill [bnvlCouleurSection] let \p1=(numero.south west), \p2=(numero.south east), \p3=(entier.south east) in (numero.north east) rectangle (\x2-#3/1.7*0.9mm,\y3+0.1mm) rectangle (\x3,\y3 -#3/1.7*0.9mm);
+    % \end{scope}
+    \node [bnvlCouleurSection] (numero) {\hspace{-2mm}\textbf{#2}};
+    \node [below right] (titre) at (numero.north east) {\begin{minipage}{\largeurtitre}\setstretch{#3}\textbf{#1}\end{minipage}};
+    \draw [line width=#3/1.7*0.9mm, bnvlCouleurSection] (titre.south east) to (titre.south west);
+  \end{tikzpicture}
+
+  \medskip\nopagebreak[3]}
+\newcommand{\sexionet}[1]{
+  \sexionmaison{\huge \corrigertitrechiant{}#1\corrigertitrechiant}{\hspace{-5mm}\phantom{\huge\corrigertitrechiant}}{1.7}
+}
+\newcommand{\sexion}[2][]{
+  \refstepcounter{section}
+  \sexionmaison{\huge \corrigertitrechiant{}#2\corrigertitrechiant}{\huge\thesection\corrigertitrechiant}{1.7}
+  \addcontentsline{toc}{section}{\numberline{\thesection} #2}
+  \label{section.\thesection}
+  \ifx&#1&
+  \renewcommand{\nomsection}{#2} % Si on a pas de titre court on garde le gros
+  \else
+  \renewcommand{\nomsection}{#1} % Si on a un titre court on le met
+  \fi
+}
+\newcommand{\subsexionet}[1]{%
+  \sexionmaison{\Large \corrigertitrechiant{}#1\corrigertitrechiant}{\hspace{-5mm}\Large \phantom{\corrigertitrechiant}}{1.4}
+}
+\newcommand{\subsexion}[1]{%
+  \refstepcounter{subsection}
+  \sexionmaison{\Large \corrigertitrechiant{}#1\corrigertitrechiant}{\Large \thesubsection\corrigertitrechiant}{1.4}
+  \addcontentsline{toc}{subsection}{\numberline{\thesubsection} #1}
+}
+\newcommand{\subsubsexionet}[1]{%
+  \sexionmaison{\large \corrigertitrechiant{}#1\corrigertitrechiant}{\hspace{-5mm}\phantom{\large\corrigertitrechiant}}{1.1}
+}
+\newcommand{\subsubsexion}[1]{%
+  \refstepcounter{subsubsection}
+  \sexionmaison{\large \corrigertitrechiant{}#1\corrigertitrechiant}{\large\thesubsubsection\corrigertitrechiant}{1.1}
+  \addcontentsline{toc}{subsubsection}{\numberline{\thesubsubsection} #1}
+}
+\newcommand{\subsubsubsexionet}[1]{%
+  \sexionmaison{\corrigertitrechiant{}#1\corrigertitrechiant}{\hspace{-5mm}\phantom{\corrigertitrechiant}}{1}
+}
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand{\thesubsubsubsection}{\thesubsubsection.\arabic{subsubsubsection}}
+\newcommand{\subsubsubsexion}[1]{%
+  \refstepcounter{subsubsubsection}
+  \sexionmaison{\corrigertitrechiant{}#1\corrigertitrechiant}{\thesubsubsubsection\corrigertitrechiant}{1}
+  \addcontentsline{toc}{paragraph}{\numberline{\thesubsubsection} #1}
+}
+
+
+\newcommand{\bnvlDecalageTitreSection}{5mm}
+\newcommand{\sexionmaisonstyle}[3]{
+  \settowidth{\largeurtextetitre}{\textbf{#1}}
+  \settowidth{\largeurtextenumero}{\textbf{#2}}
+  \pgfmathsetlength{\largeurtitre}{min(\linewidth - \bnvlDecalageTitreSection - 4.5mm - #3/1.7*0.9mm,\largeurtextetitre)}
+  \par\bigskip
+  \noindent
+  % \begin{tikzpicture}[every node/.style={line width=0, text height=\hauteurtitre, text depth=\hauteurtitre/4}]
+  \begin{tikzpicture}[every node/.style={}]
+    \node [text=bnvlCouleurSection, thick, inner sep=0] (numero){\hspace*{1mm}\textbf{#2}\hspace*{1mm}};
+    \node [text=black, minimum height=\hauteurtitre, below right, inner sep=2mm] (entier) at ($(numero.south west) + (\bnvlDecalageTitreSection,0)$) {\hspace*{1mm}\begin{minipage}{\largeurtitre}\setstretch{#3}\textbf{#1}\end{minipage}};
+    \begin{scope}[on background layer]
+      \fill [bnvlCouleurSection] let \p1=(numero.south west) in (numero.south east) rectangle (\x1,\y1-0.5*#3/1.7*0.9mm);
+      \draw [bnvlCouleurSection, line width=#3/1.7*0.9mm, rounded corners] let \p1=(numero.south west), \p2=(numero.south east), \p3=(entier.south east) in (\x1+\bnvlDecalageTitreSection,\y1-0.45*#3/1.7*0.9mm) to (\x1+\bnvlDecalageTitreSection,\y3) to (\x3,\y3);
+      % \draw [bnvlCouleurSection, line width=#3/1.7*0.9mm, rounded corners] let \p1=(numero.south east), \p2=(entier.south east), \p3=(numero.north east) in (\x1,0.5*\y1+0.5*\y3) to (\p1) to (entier.north west) to (entier.south west) to (0.7*\x2,\y2);
+    \end{scope}
+    % \begin{scope}[on background layer]
+    %   \clip let \p1=(numero.south east), \p2=(entier.south east) in (\x1-0.1mm,\y1) rectangle (\x2,\y2+0.9mm);
+    %   \filldraw [left color=bnvlCouleurSection, right color=bnvlFondBandeau!25, draw=bnvlCouleurSection!50, line width=0] let \p1=(numero.south east), \p2=(entier.south east) in (\x1-0.1mm,\y1-0.1mm) rectangle (\x1+\linewidth-11mm-\largeurtextenumero,\y2+1mm);
+    % \end{scope}
+  \end{tikzpicture}
+
+  \medskip\nopagebreak[3]}
+\newcommand{\sexionbasestyle}[3][]{
+  \smallskip
+  \refstepcounter{section}
+  \sexionmaisonstyle{\LARGE \corrigertitrechiant{}#2\corrigertitrechiant}{\Large{}#3\corrigertitrechiant}{1.7}
+  \addcontentsline{toc}{section}{\numberline{\thesection} #2}
+  \label{section.\thesection}
+  \ifx&#1&
+  \renewcommand{\nomsection}{#2} % Si on a pas de titre court on garde le gros
+  \else
+  \renewcommand{\nomsection}{#1} % Si on a un titre court on le met
+  \fi
+}
+\newcommand{\sexionstyle}[2][]{
+  \sexionbasestyle[#1]{#2}{Section~\thesection}
+}
+
+\newcommand{\partie}[2][]{%
+  \bigskip
+  \refstepcounter{part}
+  \settowidth{\largeurtextetitre}{\huge\textbf{#2}}
+  \pgfmathsetlength{\largeurtitre}{min(\linewidth-11mm,\largeurtextetitre)}
+  \begin{ctikz}
+    \node [inner sep=3mm] (titre) at (0,0) {\hspace*{2mm}\begin{minipage}{\largeurtitre}\huge\textbf{#2\corrigertitrechiant}\end{minipage}\hspace*{2mm}};
+    \node [bnvlCouleurSection] (part) at (titre.north) {\Large\textbf{Part~\thepart}};
+    \draw [line width=1mm, bnvlCouleurSection, rounded corners] let \p1=(titre.south east), \p2=(part.east) in (\p2) to (\x1,\y2) to (\x1,\y1) to (-\x1,\y1) to (-\x1,\y2) to (-\x2,\y2);
+  \end{ctikz}
+  \addcontentsline{toc}{part}{\numberline{\thepart} #2}
+  \ifx&#1&
+  \bnvlTitre{#2} % Si on a pas de titre court on garde le gros
+  \else
+  \bnvlTitre{#1} % Si on a un titre court on le met
+  \fi
+}
+
+
+
+
+% ---------- Blocs stylés ----------
+\newlength{\largeurcasethm}
+\setlength{\largeurcasethm}{\dimexpr(\textwidth - 2\parindent)\relax}
+\newcommand{\margeinterieurebloc}{2mm}
+\newcommand{\margeinterieuretitre}{1.5mm}
+\newcommand{\taillepolicetitre}{\normalsize}
+\newlength{\largeurbloc}
+\newlength{\decalagebloc}
+\setlength{\decalagebloc}{\dimexpr(\parindent - \margeinterieurebloc)\relax}
+\newcommand{\epaisseurbloc}{0.4mm}
+\newcommand{\espacementavantbloc}{4mm}
+\newcommand{\espacementapresbloc}{4mm}
+\newcommand{\miseenformetitrebloc}[1]{\textbf{#1}}
+\newcommand{\decalagetitre}{20pt}
+
+\newlength{\hauteurtype}
+\newlength{\hauteurfinale}
+\def\typelabel{nul}
+\def\couleuractuelleboite{}
+
+
+
+\makeatletter
+\@ifclassloaded{beamer}{
+  \renewcommand{\margeinterieuretitre}{0.8mm}
+  \renewcommand{\taillepolicetitre}{\footnotesize}
+  \renewcommand{\espacementavantbloc}{3mm}
+  \renewcommand{\espacementapresbloc}{3mm}
+  \renewcommand{\epaisseurbloc}{0.3mm}
+}{	% Si on est pas dans un beamer
+}
+\makeatother
+
+\newcommand{\numerotitrebloc}[1]{\thesection.\arabic{#1}}
+
+
+\newcommand{\margeblocprincipal}{\margeinterieurebloc}
+\newcommand{\couleurfondblocprincipal}{}
+\newcommand{\skinbloc}{bicolor}
+\newcommand{\opacitebloc}{1}
+
+\NewEnviron{blocstyle}[7]{
+  \ifx&#3&
+  \settowidth{\largeurtextenumero}{\taillepolicetitre\miseenformetitrebloc{#1}}
+  \settoheight{\hauteurtype}{\taillepolicetitre\fbox{\miseenformetitrebloc{#1}}}
+  \else % Si on a un compteur à augmenter
+  \refstepcounter{#3}
+  \settowidth{\largeurtextenumero}{\taillepolicetitre\miseenformetitrebloc{#1~\numerotitrebloc{#3}}}
+  \settoheight{\hauteurtype}{\taillepolicetitre\fbox{\miseenformetitrebloc{#1~\numerotitrebloc{#3}}}}
+  \fi
+
+  \def\couleuractuelleboite{#4}
+  \settowidth{\largeurtextetitre}{\taillepolicetitre\miseenformetitrebloc{#2}}
+  \pgfmathsetlength{\largeurtitre}{min(\linewidth - 2*\decalagetitre - 6*\margeinterieuretitre - \largeurtextenumero,\largeurtextetitre)}
+  \setlength{\largeurbloc}{\dimexpr(\linewidth - \margeinterieurebloc - \margeinterieurebloc)\relax}
+  \settoheight{\hauteurtitre}{\taillepolicetitre\fbox{\miseenformetitrebloc{#2}}}
+  \pgfmathsetlength{\hauteurfinale}{max(\hauteurtype,\hauteurtitre) + 2.5*\margeinterieuretitre}
+
+  \def\typelabel{#6}
+  % \renewcommand\labelle[1]{\label[\typelabel]{#1}}
+
+
+  \if\testonestdansunbeamer\onestdansunbeamer\relax
+  \renewcommand{\margeblocprincipal}{0mm}
+  \renewcommand{\couleurfondblocprincipal}{white}
+  \renewcommand{\skinbloc}{enhanced jigsaw}
+  \renewcommand{\opacitebloc}{0}
+  \else
+  \renewcommand{\margeblocprincipal}{\margeinterieurebloc}
+  \renewcommand{\couleurfondblocprincipal}{#4!#7}
+  \renewcommand{\skinbloc}{bicolor}
+  \renewcommand{\opacitebloc}{1}
+  \fi
+
+  \begin{tcolorbox}[enhanced jigsaw, sharp corners, colframe=#4,
+    colbacklower=white, boxrule=\epaisseurbloc, before skip=\espacementavantbloc, after skip=\espacementapresbloc, boxsep=0mm,
+    left=\margeblocprincipal, right=\margeblocprincipal, bottom=\margeblocprincipal, top=\margeblocprincipal,
+    colback=\couleurfondblocprincipal,
+    opacityback=\opacitebloc,
+    skin=\skinbloc,
+    parbox=true, breakable, enlarge bottom at break by=-20cm, bottomsep at break=20cm,  enlarge top at break by=-2cm, topsep at break=1.8cm, %opacitybacktitle=0,
+    attach boxed title to top left={xshift=\decalagetitre, yshift=-0.1pt},
+    boxed title style={colback=white, opacityback=1, opacityframe=1, boxsep=-\epaisseurbloc/2, left=0mm, right=0mm, top=0mm, bottom=0mm, boxrule=\epaisseurbloc, bottomrule=0mm, sharp corners},
+    title={
+      \begin{tikzpicture}[every node/.style={line width=\epaisseurbloc, outer sep=0, inner sep=\margeinterieuretitre}]
+        \taillepolicetitre
+        \begin{scope}[on background layer]
+          \ifx&#2& % S'il y a pas de titre
+          \node[fill=#4, text=white] (type) {\miseenformetitrebloc{\corrigertitrechiant{}#1
+              \ifx&#3&\else\def\thm{thm}\def\mcro{#5}\ifx\mcro\thm\labelle{thm:\thetheoremnumber\theexercicenumber}\else\fi
+              \numerotitrebloc{#3}\fi}%
+          };
+          \fill [#4] let \p1=(type.north east), \p2=(type.south east) in (\x1 - 0.1pt,\y1) to (\x1 + 0.1pt,\y1) to (\x2 + 0.1pt,\y2 + 0.1pt) to (\x1 - 0.1pt,\y1 + 0.1pt) to cycle;
+          \fill [#4] let \p1=(type.south west), \p2=(type.south east) in (\x1,\y1 + 0.5mm) to (\x2,\y2 + 0.5mm) to (\x2,\y2 - 1pt) to (\x1,\y1 - 1pt) to cycle;
+
+
+          \else % S'il y a un titre
+
+          \if\testonestdansunbeamer\onestdansunbeamer\relax\else % Si on est pas dans un beamer
+          \ifx&#5&\else % On ajoute l'index s'il faut
+          \index[#5]{#2}
+          \fi
+          \fi
+
+          \node[text=black!10!#4] (titre) {\hspace*{\margeinterieuretitre}\begin{minipage}{\largeurtitre}\miseenformetitrebloc{\corrigertitrechiant{}#2}\end{minipage}\hspace*{\margeinterieuretitre}};
+
+          \node[fill=#4, text=white, below left] (type) at (titre.north west) {\miseenformetitrebloc{\corrigertitrechiant{}#1
+              \ifx&#3&\else\def\thm{thm}\def\mcro{#5}\ifx\mcro\thm\labelle{thm:\thetheoremnumber\theexercicenumber}\else\fi
+              \numerotitrebloc{#3}\fi}};
+
+          \fill [#4] let \p1=(type.south west), \p2=(type.south east), \p3=(titre.south east) in (\x1,\y1 + 1pt) to (\x2,\y2 + 1pt) to (\x2,\y3) to (\x1,\y3) to cycle;
+          \fill [#4] let \p1=(type.north east), \p2=(type.south east), \p3=(titre.south east) in (\x1 - 0.1pt,\y1) to (\x1 + 0.1pt,\y1) to (\x2 + 0.1pt,\y3) to (\x1 - 0.1pt,\y3) to cycle;
+          \fi % Fini de regarder s'il y a un titre
+
+          % \fill [#4] let \p1=(type.north west), \p2=(type.north east) in (\x1,\y1 + 0.5mm) to (\x2,\y2 + 0.5mm) to (\x2,\y2 - 1pt) to (\x1,\y1 - 1pt) to cycle;
+
+
+        \end{scope}
+      \end{tikzpicture}},
+    subtitle style={colback=#4, top=\margeinterieuretitre, bottom=\margeinterieuretitre}]
+    \if\testonestdansunbeamer\onestdansunbeamer\relax
+    \begin{tcbitemize}[raster columns=1,raster equal skip=0pt,
+      sharp corners,boxrule=0pt,boxsep=0mm, left=\margeinterieurebloc, right=\margeinterieurebloc, top=\margeinterieurebloc, bottom=\margeinterieurebloc, opacityback=#7/100,
+      raster odd row/.style={tile, colback=#4},
+      raster even row/.style={tile, colback=white, borderline north={\epaisseurbloc}{0pt}{#4}}]
+      \tcbitem
+      \BODY
+    \end{tcbitemize}
+    \else
+    \BODY
+    \fi
+  \end{tcolorbox}
+}
+
+\newenvironment{blocsimple}[3][]{\blocstyle{#2}{#1}{}{#3}{}{}{10}}{\endblocstyle}
+
+\newcounter{theoremnumber}[section]
+\renewcommand{\thetheoremnumber}{\thesection.\arabic{theoremnumber}}
+\newenvironment{thm}[1][]{\blocstyle{\texteTheoreme}{#1}{theoremnumber}{couleurtheoreme}{thm}{thm}{10}}{\endblocstyle}
+\newenvironment{thm*}[1][]{\blocstyle{\texteTheoreme}{#1}{}{couleurtheoreme}{}{thm}{10}}{\endblocstyle}
+\newenvironment{prop}[1][]{\blocstyle{\texteProposition}{#1}{theoremnumber}{couleurproposition}{thm}{prop}{10}}{\endblocstyle}
+\newenvironment{prop*}[1][]{\blocstyle{\texteProposition}{#1}{}{couleurproposition}{}{prop}{10}}{\endblocstyle}
+\newenvironment{propriete}[1][]{\blocstyle{\textePropriete}{#1}{theoremnumber}{couleurproposition}{thm}{propriete}{10}}{\endblocstyle}
+\newenvironment{propriete*}[1][]{\blocstyle{\textePropriete}{#1}{}{couleurproposition}{}{propriete}{10}}{\endblocstyle}
+\newenvironment{lemme}[1][]{\blocstyle{\texteLemme}{#1}{theoremnumber}{couleurlemme}{thm}{lemme}{10}}{\endblocstyle}
+\newenvironment{lemme*}[1][]{\blocstyle{\texteLemme}{#1}{}{couleurlemme}{}{lemme}{10}}{\endblocstyle}
+\newenvironment{claim}[1][]{\blocstyle{\texteClaim}{#1}{theoremnumber}{couleurlemme}{thm}{claim}{10}}{\endblocstyle}
+\newenvironment{claim*}[1][]{\blocstyle{\texteClaim}{#1}{}{couleurlemme}{}{claim}{10}}{\endblocstyle}
+\newenvironment{cor}[1][]{\blocstyle{\texteCorollaire}{#1}{theoremnumber}{couleurproposition}{thm}{cor}{10}}{\endblocstyle}
+\newenvironment{cor*}[1][]{\blocstyle{\texteCorollaire}{#1}{}{couleurproposition}{}{cor}{10}}{\endblocstyle}
+\newenvironment{res}[1][]{\blocstyle{\texteResultat}{#1}{theoremnumber}{couleurproposition}{thm}{res}{10}}{\endblocstyle}
+\newenvironment{res*}[1][]{\blocstyle{\texteResultat}{#1}{}{couleurproposition}{}{res}{10}}{\endblocstyle}
+\newenvironment{fait}[1][]{\blocstyle{\texteFait}{#1}{theoremnumber}{couleurproposition}{thm}{fait}{10}}{\endblocstyle}
+\newenvironment{fait*}[1][]{\blocstyle{\texteFait}{#1}{}{couleurproposition}{}{fait}{10}}{\endblocstyle}
+\newenvironment{conjecture}[1][]{\blocstyle{\texteConjecture}{#1}{theoremnumber}{couleurconjecture}{thm}{conjecture}{10}}{\endblocstyle}
+\newenvironment{conjecture*}[1][]{\blocstyle{\texteConjecture}{#1}{}{couleurconjecture}{}{conjecture}{10}}{\endblocstyle}
+\newenvironment{hypothese}[1][]{\blocstyle{\texteHypothese}{#1}{theoremnumber}{couleurconjecture}{thm}{hypothese}{10}}{\endblocstyle}
+\newenvironment{hypothese*}[1][]{\blocstyle{\texteHypothese}{#1}{}{couleurconjecture}{}{hypothese}{10}}{\endblocstyle}
+
+\newcounter{definitionnumber}[section]
+\renewcommand{\thedefinitionnumber}{\thesection.\arabic{definitionnumber}}
+\newcounter{notationnumber}[section]
+\renewcommand{\thenotationnumber}{\thesection.\arabic{notationnumber}}
+\newenvironment{defn}[1][]{\blocstyle{\texteDefinition}{#1}{theoremnumber}{couleurdefinition}{defn}{defn}{8}}{\endblocstyle}
+\newenvironment{defn*}[1][]{\blocstyle{\texteDefinition}{#1}{}{couleurdefinition}{}{defn}{8}}{\endblocstyle}
+\newenvironment{notation}[1][]{\blocstyle{\texteNotation}{#1}{theoremnumber}{couleurdefinition}{defn}{notation}{8}}{\endblocstyle}
+\newenvironment{notation*}[1][]{\blocstyle{\texteNotation}{#1}{}{couleurdefinition}{}{notation}{8}}{\endblocstyle}
+
+\newcounter{exemplenumber}[section]
+\renewcommand{\theexemplenumber}{\thesection.\arabic{exemplenumber}}
+\newenvironment{ex}[1][]{\blocstyle{\texteExemple}{#1}{theoremnumber}{couleurexemple}{}{ex}{10}}{\endblocstyle}
+\newenvironment{ex*}[1][]{\blocstyle{\texteExemple}{#1}{}{couleurexemple}{}{ex}{10}}{\endblocstyle}
+
+\newcounter{exercicenumber}[section]
+\renewcommand{\theexercicenumber}{\thesection.\arabic{exercicenumber}}
+\newenvironment{exo}[1][]{\blocstyle{\texteExercice}{#1}{theoremnumber}{couleurexemple}{thm}{exo}{10}}{\endblocstyle}
+\newenvironment{exo*}[1][]{\blocstyle{\texteExercice}{#1}{}{couleurexemple}{}{exo}{10}}{\endblocstyle}
+
+\newcounter{applicationnumber}[section]
+\renewcommand{\theapplicationnumber}{\thesection.\arabic{applicationnumber}}
+\newenvironment{application}[1][]{\blocstyle{\texteApplication}{#1}{theoremnumber}{couleurexemple}{}{exo}{10}}{\endblocstyle}
+\newenvironment{application*}[1][]{\blocstyle{\texteApplication}{#1}{}{couleurexemple}{}{exo}{10}}{\endblocstyle}
+
+\newcounter{remarquenumber}[section]
+\renewcommand{\theremarquenumber}{\thesection.\arabic{remarquenumber}}
+\newenvironment{rk}[1][]{\blocstyle{\texteRemarque}{#1}{theoremnumber}{couleurremarque}{}{rk}{10}}{\endblocstyle}
+\newenvironment{rk*}[1][]{\blocstyle{\texteRemarque}{#1}{}{couleurremarque}{}{rk}{10}}{\endblocstyle}
+
+\newcounter{questionnumber}[section]
+\renewcommand{\thequestionnumber}{\thesection.\arabic{questionnumber}}
+\newenvironment{question}[1][]{\blocstyle{\texteQuestion}{#1}{theoremnumber}{couleurremarque}{}{question}{10}}{\endblocstyle}
+\newenvironment{question*}[1][]{\blocstyle{\texteQuestion}{#1}{}{couleurremarque}{}{question}{10}}{\endblocstyle}
+
+\newcommand{\preuvesousboite}[1][]{
+  \if\testonestdansunbeamer\onestdansunbeamer\relax
+  \tcbitem
+  \else
+  \tcblower
+  \fi
+  \ifx&#1&
+  {\color{\couleuractuelleboite}\textbf{\textePreuve{}.}\par}
+  \else
+  {\color{\couleuractuelleboite}\textbf{#1}\par}
+  \fi
+}
+
+\newenvironment{preuveenboite}[2][]
+{
+  \begin{tcolorbox}[enhanced jigsaw, sharp corners, colframe=#2, colback=white, boxrule=\epaisseurbloc, before skip=4mm, after skip=4mm, boxsep=0mm, left=\margeinterieurebloc, right=\margeinterieurebloc, top=\margeinterieurebloc, bottom=\margeinterieurebloc, parbox=true, breakable, enlarge bottom at break by=-20cm, bottomsep at break=20cm,  enlarge top at break by=-2cm, topsep at break=1.8cm, opacitybacktitle=0]
+    {\color{#2}\textbf{#1}}\par
+}
+{
+  \end{tcolorbox}
+}
+
+\newenvironment{preuve}[1][]
+{
+  \begin{tcolorbox}
+    [enhanced jigsaw, sharp corners, opacityframe=0, opacityback=0, borderline west={\epaisseurbloc}{0pt}{black!50}, boxsep=0mm, left=\margeinterieurebloc, bottom=0mm, right=0mm, breakable, enlarge bottom at break by=-20cm, bottomsep at break=20cm,  enlarge top at break by=-2cm, topsep at break=1.8cm, opacitybacktitle=0, attach boxed title to top left={xshift=0mm, yshift=0mm}, coltitle=black,
+    boxed title style={sharp corners, opacityframe=0, opacityback=0, borderline south={\epaisseurbloc}{0pt}{black!50}, colframe=black!50, left=0mm, right=0mm, bottom=0mm, top=0mm},
+    title={
+      \textbf{
+        \ifx&#1&
+        \textePreuveDuResultat~\Cref{thm:\thetheoremnumber\theexercicenumber}.
+        \else
+        \textePreuve~#1.
+        \fi
+      }
+    }
+    ]
+}
+{
+  \nopagebreak
+  \begin{flushright}
+    \nopagebreak
+    \textit{\findepreuve}
+  \end{flushright}
+  \vspace{-10pt}
+  \end{tcolorbox}
+}
+
+% Pour changer l'indentation des listes à puce
+\setlist[itemize]{leftmargin=5mm}
+\setlist[enumerate]{leftmargin=5mm}
+
+\newcommand{\coord}[1]{\tikz [remember picture] \node [inner sep=0] (#1) {\phantom{A}}; \hskip -2.9mm} % Creates a marker in a text to use it in a tikzpicture
+
+\newenvironment{ctikz}[1][]{\begin{center}\begin{tikzpicture}[#1]}{\end{tikzpicture}\end{center}}
+
+\newenvironment{aligne}{\begin{center}\(\displaystyle\begin{aligned}}{\end{aligned}\)\end{center}}
+
+\newcommand{\elem}{}
+\newcounter{listenumeroteenumber}
+\newenvironment{listeapuces}{
+  \renewcommand{\elem}{
+
+    --- }
+}
+{\par}
+\newenvironment{listenumerotee}{
+  \renewcommand{\elem}{
+
+
+    \stepcounter{listenumeroteenumber}
+    \arabic{listenumeroteenumber}.
+  }
+  \setcounter{listenumeroteenumber}{0}
+}
+{\par}
+
+
+\NewEnviron{bulle}{
+  \par\noindent
+  \begin{tikzpicture}
+    \node[draw=black!70, fill=black!8, below right, rounded corners=7pt, very thick, rectangle callout] (body) at (0,-0.05) {\BODY};
+  \end{tikzpicture}
+}
+\NewEnviron{wow}{
+  \par\noindent
+  \begin{tikzpicture}
+    \node[starburst, starburst points=50, starburst point height=5mm,draw] {\BODY};
+  \end{tikzpicture}
+}
+
+% Symboles utiles et renommage de commandes usuelles
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\bar}[1]{\overline{#1}}
+\renewcommand{\hat}[1]{\widehat{#1}}
+
+\newcommand{\calA}{\ensuremath{\mathcal{A}}}
+\newcommand{\calB}{\ensuremath{\mathcal{B}}}
+\newcommand{\calC}{\ensuremath{\mathcal{C}}}
+\newcommand{\calD}{\ensuremath{\mathcal{D}}}
+\newcommand{\calE}{\ensuremath{\mathcal{E}}}
+\newcommand{\calF}{\ensuremath{\mathcal{F}}}
+\newcommand{\calG}{\ensuremath{\mathcal{G}}}
+\newcommand{\calH}{\ensuremath{\mathcal{H}}}
+\newcommand{\calI}{\ensuremath{\mathcal{I}}}
+\newcommand{\calJ}{\ensuremath{\mathcal{J}}}
+\newcommand{\calK}{\ensuremath{\mathcal{K}}}
+\newcommand{\calL}{\ensuremath{\mathcal{L}}}
+\newcommand{\calM}{\ensuremath{\mathcal{M}}}
+\newcommand{\calN}{\ensuremath{\mathcal{N}}}
+\newcommand{\calO}{\ensuremath{\mathcal{O}}}
+\newcommand{\calP}{\ensuremath{\mathcal{P}}}
+\newcommand{\calQ}{\ensuremath{\mathcal{Q}}}
+\newcommand{\calR}{\ensuremath{\mathcal{R}}}
+\newcommand{\calS}{\ensuremath{\mathcal{S}}}
+\newcommand{\calT}{\ensuremath{\mathcal{T}}}
+\newcommand{\calU}{\ensuremath{\mathcal{U}}}
+\newcommand{\calV}{\ensuremath{\mathcal{V}}}
+\newcommand{\calW}{\ensuremath{\mathcal{W}}}
+\newcommand{\calX}{\ensuremath{\mathcal{X}}}
+\newcommand{\calY}{\ensuremath{\mathcal{Y}}}
+\newcommand{\calZ}{\ensuremath{\mathcal{Z}}}
+\newcommand{\frakA}{\ensuremath{\mathfrak{A}}}
+\newcommand{\frakB}{\ensuremath{\mathfrak{B}}}
+\newcommand{\frakC}{\ensuremath{\mathfrak{C}}}
+\newcommand{\frakD}{\ensuremath{\mathfrak{D}}}
+\newcommand{\frakE}{\ensuremath{\mathfrak{E}}}
+\newcommand{\frakF}{\ensuremath{\mathfrak{F}}}
+\newcommand{\frakG}{\ensuremath{\mathfrak{G}}}
+\newcommand{\frakH}{\ensuremath{\mathfrak{H}}}
+\newcommand{\frakI}{\ensuremath{\mathfrak{I}}}
+\newcommand{\frakJ}{\ensuremath{\mathfrak{J}}}
+\newcommand{\frakK}{\ensuremath{\mathfrak{K}}}
+\newcommand{\frakL}{\ensuremath{\mathfrak{L}}}
+\newcommand{\frakM}{\ensuremath{\mathfrak{M}}}
+\newcommand{\frakN}{\ensuremath{\mathfrak{N}}}
+\newcommand{\frakO}{\ensuremath{\mathfrak{O}}}
+\newcommand{\frakP}{\ensuremath{\mathfrak{P}}}
+\newcommand{\frakQ}{\ensuremath{\mathfrak{Q}}}
+\newcommand{\frakR}{\ensuremath{\mathfrak{R}}}
+\newcommand{\frakS}{\ensuremath{\mathfrak{S}}}
+\newcommand{\frakT}{\ensuremath{\mathfrak{T}}}
+\newcommand{\frakU}{\ensuremath{\mathfrak{U}}}
+\newcommand{\frakV}{\ensuremath{\mathfrak{V}}}
+\newcommand{\frakW}{\ensuremath{\mathfrak{W}}}
+\newcommand{\frakX}{\ensuremath{\mathfrak{X}}}
+\newcommand{\frakY}{\ensuremath{\mathfrak{Y}}}
+\newcommand{\frakZ}{\ensuremath{\mathfrak{Z}}}
+\newcommand{\bbA}{\ensuremath{\mathbb{A}}}
+\newcommand{\bbB}{\ensuremath{\mathbb{B}}}
+\newcommand{\bbC}{\ensuremath{\mathbb{C}}}
+\newcommand{\bbD}{\ensuremath{\mathbb{D}}}
+\newcommand{\bbE}{\ensuremath{\mathbb{E}}}
+\newcommand{\bbF}{\ensuremath{\mathbb{F}}}
+\newcommand{\bbG}{\ensuremath{\mathbb{G}}}
+\newcommand{\bbH}{\ensuremath{\mathbb{H}}}
+\newcommand{\bbI}{\ensuremath{\mathbb{I}}}
+\newcommand{\bbJ}{\ensuremath{\mathbb{J}}}
+\newcommand{\bbK}{\ensuremath{\mathbb{K}}}
+\newcommand{\bbL}{\ensuremath{\mathbb{L}}}
+\newcommand{\bbM}{\ensuremath{\mathbb{M}}}
+\newcommand{\bbN}{\ensuremath{\mathbb{N}}}
+\newcommand{\bbO}{\ensuremath{\mathbb{O}}}
+\newcommand{\bbP}{\ensuremath{\mathbb{P}}}
+\newcommand{\bbQ}{\ensuremath{\mathbb{Q}}}
+\newcommand{\bbR}{\ensuremath{\mathbb{R}}}
+\newcommand{\bbS}{\ensuremath{\mathbb{S}}}
+\newcommand{\bbT}{\ensuremath{\mathbb{T}}}
+\newcommand{\bbU}{\ensuremath{\mathbb{U}}}
+\newcommand{\bbV}{\ensuremath{\mathbb{V}}}
+\newcommand{\bbW}{\ensuremath{\mathbb{W}}}
+\newcommand{\bbX}{\ensuremath{\mathbb{X}}}
+\newcommand{\bbY}{\ensuremath{\mathbb{Y}}}
+\newcommand{\bbZ}{\ensuremath{\mathbb{Z}}}
+\newcommand{\sfA}{\ensuremath{\mathsf{A}}}
+\newcommand{\sfB}{\ensuremath{\mathsf{B}}}
+\newcommand{\sfC}{\ensuremath{\mathsf{C}}}
+\newcommand{\sfD}{\ensuremath{\mathsf{D}}}
+\newcommand{\sfE}{\ensuremath{\mathsf{E}}}
+\newcommand{\sfF}{\ensuremath{\mathsf{F}}}
+\newcommand{\sfG}{\ensuremath{\mathsf{G}}}
+\newcommand{\sfH}{\ensuremath{\mathsf{H}}}
+\newcommand{\sfI}{\ensuremath{\mathsf{I}}}
+\newcommand{\sfJ}{\ensuremath{\mathsf{J}}}
+\newcommand{\sfK}{\ensuremath{\mathsf{K}}}
+\newcommand{\sfL}{\ensuremath{\mathsf{L}}}
+\newcommand{\sfM}{\ensuremath{\mathsf{M}}}
+\newcommand{\sfN}{\ensuremath{\mathsf{N}}}
+\newcommand{\sfO}{\ensuremath{\mathsf{O}}}
+\newcommand{\sfP}{\ensuremath{\mathsf{P}}}
+\newcommand{\sfQ}{\ensuremath{\mathsf{Q}}}
+\newcommand{\sfR}{\ensuremath{\mathsf{R}}}
+\newcommand{\sfS}{\ensuremath{\mathsf{S}}}
+\newcommand{\sfT}{\ensuremath{\mathsf{T}}}
+\newcommand{\sfU}{\ensuremath{\mathsf{U}}}
+\newcommand{\sfV}{\ensuremath{\mathsf{V}}}
+\newcommand{\sfW}{\ensuremath{\mathsf{W}}}
+\newcommand{\sfX}{\ensuremath{\mathsf{X}}}
+\newcommand{\sfY}{\ensuremath{\mathsf{Y}}}
+\newcommand{\sfZ}{\ensuremath{\mathsf{Z}}}
+
+
+
+\newcommand{\ToBeContinued}{
+  \begin{tikzpicture}[scale=0.4]
+    \fill [black] (0,0) to (1,-1) to (1,1) to cycle;
+    \fill [black] (0.9,0.5) to (7.5,0.5) to (7.5,-0.5) to (0.9,-0.5) to cycle;
+    \node [right, white] at (1,0) {\footnotesize \textbf{To Be Continued}};
+    \fill [black] (7.8,-0.5) to (7.8,0.5) to (8.3,-0.5) to cycle;
+    \fill [black] (8.05,0.5) to (8.55,0.5) to (8.55,-0.5) to cycle;
+    \fill [black] (8.8,0.5) to (9.3,0.5) to (8.8,-0.5) to cycle;
+  \end{tikzpicture}
+}
+
+\renewcommand{\nrightarrow}[1]{%
+\begin{tikzpicture}[x=1ex,y=1ex]%
+\draw [line width=0.08ex] (1.875ex,0.625ex) -- (1.25ex,1.25ex);%
+\draw [line width=0.08ex] (1.875ex,0.625ex) -- (1.25ex,0ex);%
+\path[->, >={Triangle[inset=0pt, line width=0.06ex,length=0.08ex,angle'=90]}] (1.9ex,0.625ex) edge (1.925ex,0.625ex);
+%\path[->, >={To[inset=0pt, line width=0.06ex,length=0.4ex,angle'=120]}] (1.874ex,0.625ex) edge (1.875ex,0.625ex);
+\foreach \x in {1,...,#1} {
+  \draw [line width=0.08ex/sqrt(sqrt(#1))] (0,0.125-0.5/#1+\x/#1) -- ({1.87-abs(\x/#1-0.5-0.5/#1)},0.125-0.5/#1+\x/#1);%
+}
+\end{tikzpicture}%
+}
+
+\newcommand{\smiley}[4]{%
+\begin{tikzpicture}[x=1ex,y=1ex]%
+\draw [fill] (-0.5,0) circle (0.05);%
+\draw [fill] (0,0) circle (0.05);%
+\draw [-, line width=0.08ex] (-0.25-#4,0.25+#3-#4) arc (#1:#2:#4);
+\end{tikzpicture}%
+}
+\newcommand{\happysmiley}{\smiley{180}{360}{-0.3}{0.25}}
+\newcommand{\sadsmiley}{\smiley{180}{0}{-0.55}{0.25}}
+\newcommand{\surprisedsmiley}{\smiley{180}{540}{-0.55}{0.125}}
+\newcommand{\happy}[1]{\overset{\happysmiley}{#1}}
+\newcommand{\sad}[1]{\overset{\sadsmiley}{#1}}
+\newcommand{\surprised}[1]{\overset{\surprisedsmiley}{#1}}
+

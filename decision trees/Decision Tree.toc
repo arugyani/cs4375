@@ -1,0 +1,12 @@
+\contentsline {part}{I\hspace {1em}Probability, Random Variables, and Entropy}{2}{part.1}%
+\contentsline {section}{\numberline {1}Probability}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Discrete Probability}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Conditional Probability}{3}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Independence}{3}{subsubsection.1.2.1}%
+\contentsline {section}{\numberline {2}Discrete Random Variables}{4}{section.2}%
+\contentsline {section}{\numberline {3}Entropy}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Conditional Entropy}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Information Gain}{4}{subsection.3.2}%
+\contentsline {part}{II\hspace {1em}Decision Trees}{4}{part.2}%
+\contentsline {part}{Index}{4}{section*.1}%
+\contentsline {section}{Definitions}{5}{section*.2}%

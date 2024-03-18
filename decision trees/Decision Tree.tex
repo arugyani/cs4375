@@ -1,0 +1,111 @@
+\documentclass{mlnotes}
+
+\lecture{7}
+\topic{Decision Trees}
+\author{Aru Gyani}
+\subtitle{Based on Prof.\ Rishabh Iyer's slides.}
+
+% --- Links --- %
+\def\seeingtheory{https://seeing-theory.brown.edu/basic-probability/index.html}
+\def\khanstats{https://www.khanacademy.org/math/ap-statistics/probability-ap/stats-conditional-probability/a/check-independence-conditional-probability}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\clearpage
+
+\part{Probability, Random Variables, and Entropy}
+\section{Probability}
+The following content is sourced from the following:
+\begin{itemize}
+  \item \link{\seeingtheory}{seeing-theory}
+  \item \link{\khanstats}{Khan Academy}
+  \item Professor Rishabh Iyer's class notes
+\end{itemize}
+
+\subsection{Discrete Probability}
+
+\begin{definition}{Sample space}{sample_space}
+  \define{Sample space} specifies the set of possible outcomes.\\[12pt]
+  For example, \(\Omega=\{H,T\}\) would be the set of possible outcomes of a
+  coin flip. Simply put, we are saying a coin flip could be either
+  \emph{heads} or \emph{tails}.
+\end{definition}
+
+\begin{definition}{Probability}{probability}
+  \define{Probability} is simply how likely something is to happen\\[12pt]
+  For each element \(\omega\) inside of our sample space \(\Omega\), there is a
+  number \(p(\omega)\ \epsilon\ [0,1]\) called a probability. This represents
+  how likely the event \(\omega\) is to happen.\\[12pt]
+  The total probability of all possible outcomes (each outcome being an element
+  \(\omega\)) within the sample space \(\Omega\) adds up to \(1\). This means
+  that one of the outcomes in the sample space is certain to occur.
+  
+  \[
+    \sum_{\omega \in \Omega} p(\omega) = 1
+  \]
+
+  For exaxmple, a biased coin might have \(p(H) = .6\) and \(p(T) = .4\).
+  \\[12pt]
+  \small{Note: \([0,1]\)} is a range, not a set. This number is always between 0
+  and 1, where 0 indicates impossibility and 1 indicates certainty.
+\end{definition}
+
+\begin{definition}{Event}{event}
+  An \define{event} is a subset of the sample space \(\Omega\), e.g.
+  \begin{itemize}
+    \item Let \(\Omega = \{1,2,3,4,5,6\}\) be the \(6\) possible outcomes of a
+    dice roll.
+    \item \(A = \{1,5,6\} \subseteq \Omega\) would be the event that the dice roll
+    comes up as a one, five, or six.
+  \end{itemize}
+
+  The probability of an event is just the \underline{sum of all the outcomes
+  that it contains}.
+  \[
+    p(A) = p(1) + p(5) + p(6)
+  \]
+  \small{Note: \(A \subseteq\ \Omega\) means that \(A\) is a subset of \(\Omega\). Below, is a brief recap of what a subset is.}
+  \begin{definition}{Subset}{subset}
+    A set \(A\) is a\ \define{subset} of another set \(B\) if all of
+    elements of the set \(A\) are elements of the set \(B\). In other words, the
+    set \(A\) is contained inside the set \(B\).
+  \end{definition} 
+\end{definition}
+
+\subsection{Conditional Probability}
+\subsubsection{Independence}
+We say two events are independent if knowing one event occurred doesn't change
+the probability of the other event.
+For example, the probability that a fair coin shows ``heads'' after being
+flipped is \(\frac{1}{2}\). What if we knew the day was Tuesday? Does this
+change the probability of getting ``heads''? Of course not. The probability of
+getting ``heads'', given that it's a Tuesday, is still \(\frac{1}{2}\). Thus,
+the result of a coin flip and the day being Tuesday are independent events.
+\link[blue]{\khanstats}{More reading}.
+
+\begin{definition}{\define{Independence}}{independence}
+  Two events \(A\) and \(B\) are independent if
+  \[
+    p(A \cap B) = p(A)P(B) 
+  \]
+
+  Informally, \(p(A \cap B)\) indicates the probability of \(A\) and \(B\) (aka
+  probability of \(A\) intersection \(B\)). This means that it indicates the likelihood of both events happening.
+\end{definition}
+
+Let's suppose that we have a fair die: \(p(1) = \cdots = p(6) = \frac{1}{6}\) (the
+probability of rolling any number on the dice is equal). If \(A = \{1,2,5\}\)
+and \(B = \{3,4,6\}\) are \(A\) and \(B\) independent?
+
+\section{Discrete Random Variables}
+\section{Entropy}
+\subsection{Conditional Entropy}
+\subsection{Information Gain}
+
+\part{Decision Trees}
+
+\phantomsection{}
+\addcontentsline{toc}{part}{Index}
+\printindex[defn]
+\end{document}
