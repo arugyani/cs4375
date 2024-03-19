@@ -281,6 +281,19 @@ Random variables partition the state space into disjoint events.
   \emph{discrete} refers to a space that is countable (if you can find the
   first element in the space, then you can find the second, then the third, etc.)
 \end{definition}
+
+Notation:
+\begin{itemize}
+  \item \(\omega\) stands for an individual outcome of the random process you're
+  considering. It's like a placeholder for any one of the specific results that
+  could happen.
+  \item \(\Omega\) represents the sample space, which is the set of all possible
+  outcomes of the random process.
+  % \item 
+  \\[12pt]
+  So, when you see \(\omega \in \Omega\), it means that \(w\) is one of the
+  possible outcomes within the sample space \(\Omega\).
+\end{itemize}
 \end{definition}
 Let's break down the properties of discrete random variables we see in the
 definition with an example.
@@ -296,13 +309,19 @@ is odd or even.
   \item Now, \(X\) is a function because it takes each outcome of the die roll
   and gives you either a \(0\) or a \(1\) based on the rule you defined.
 \end{enumerate}
-
-Let's write this out using the formal notation:
+\vspace{12pt}
+Let's try to model a fair coin flip using the formal notation:
 \begin{gather*}
-  \Omega=\{1,2,3,4,5,6\}\\
+  \Omega=\{H,T\}\\
   D=\{0,1\}\\
-  X : \Omega \rightarrow D
+  X(\omega) = \Omega \rightarrow D = \begin{cases}
+    \omega = H : 1\\
+    \omega = T : 0
+  \end{cases}
 \end{gather*}
+\vspace{12pt}
+We can now use this in a probability distribution, \(p(X)\).
+
 
 \section{Entropy}
 \subsection{Conditional Entropy}
