@@ -8,9 +8,9 @@
 \contentsline {subsubsection}{\numberline {1.2.2}Conditional Probability}{6}{subsubsection.1.2.2}%
 \contentsline {paragraph}{Conditional Probability Example 1: Dice Rolls}{6}{paragraph*.3}%
 \contentsline {section}{\numberline {2}Discrete Random Variables}{8}{section.2}%
-\contentsline {section}{\numberline {3}Entropy}{8}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Conditional Entropy}{8}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Information Gain}{8}{subsection.3.2}%
-\contentsline {part}{II\hspace {1em}Decision Trees}{8}{part.2}%
-\contentsline {part}{Index}{8}{section*.4}%
-\contentsline {section}{Definitions}{9}{section*.5}%
+\contentsline {section}{\numberline {3}Entropy}{9}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Conditional Entropy}{9}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Information Gain}{9}{subsection.3.2}%
+\contentsline {part}{II\hspace {1em}Decision Trees}{9}{part.2}%
+\contentsline {part}{Index}{9}{section*.4}%
+\contentsline {section}{Definitions}{10}{section*.5}%

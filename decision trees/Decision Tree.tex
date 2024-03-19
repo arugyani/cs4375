@@ -213,7 +213,7 @@ Conditional probability is about looking at what the chances are of one thing
 happening if we know that something else already happened.
 \\[12pt]
 \(P(A|B)\): ``If we know that the dice is greater than \(4\), what's the chance
-it's also even?''
+it's also even''?
 
 To figure this out let's go through the following steps:
 \begin{enumerate}
@@ -240,7 +240,7 @@ than \(4\)) has occurred. This knowledge ``shrinks'' our sample space --- the
 set of possible outcomes we consider --- to only those that fit this condition.
 \\[12pt]
 So, when we're looking at \(P(A|B)\), we're asking ``Given that we have rolled a
-number greater than 4, what is the probability that this number is also even?''
+number greater than 4, what is the probability that this number is also even''?
 \\[12pt]
 Since we know that \(B\) has happened, we ignore the rest of our original sample
 space of the dice \((1,2,3,4)\) and only consider \(\{5,6\}\). Out of these two
@@ -258,6 +258,52 @@ To show this same process done using the formula\ldots
 \end{align*}
 
 \section{Discrete Random Variables}
+\begin{definition}{\define{Discrete Random Variables}}{discrete_random_variables}
+A \textbf{discrete random variable} \(X\), is a function from the state (sample)
+space \(\Omega\) into a discrete space \(D\).
+
+\begin{enumerate}
+  \item For each \(x \in D\):
+    \[p(X = x) \equiv p(\{\omega \in \Omega : X(\omega) = x\})\]
+  is the probability that \(X\) takes the value of \(x\).
+
+  \item \(p(X)\) defines a probability distribution:
+  \[
+    \sum_{x \in D} p(X = x) = 1
+  \]
+\end{enumerate}
+
+Random variables partition the state space into disjoint events.
+
+\begin{definition}{\define{Discrete Space}}{discrete_space}
+  A \textbf{discrete} space \(D\) refers to a set of distinct, separate values that a
+  random value \(X\) can take on. In the context of probability,\
+  \emph{discrete} refers to a space that is countable (if you can find the
+  first element in the space, then you can find the second, then the third, etc.)
+\end{definition}
+\end{definition}
+Let's break down the properties of discrete random variables we see in the
+definition with an example.
+\\[12pt]
+Suppose you roll a six-sided die, and you're intereseted in whether the result
+is odd or even.
+\begin{enumerate}
+  \item Your state space \(\Omega\) is the possible die results: \(\{1,2,3,4,5,6\}\).
+  \item You define a random variable \(X\) where \(X(\omega)\) is \(0\) if
+  \(\omega\) (the die result) is odd, and \(1\) if \(\omega\) is even.
+  \item The discrete space \(D\) that \(X\) maps to is \(\{0,1\}\) because those
+  are the only two values \(X\) can take.
+  \item Now, \(X\) is a function because it takes each outcome of the die roll
+  and gives you either a \(0\) or a \(1\) based on the rule you defined.
+\end{enumerate}
+
+Let's write this out using the formal notation:
+\begin{gather*}
+  \Omega=\{1,2,3,4,5,6\}\\
+  D=\{0,1\}\\
+  X : \Omega \rightarrow D
+\end{gather*}
+
 \section{Entropy}
 \subsection{Conditional Entropy}
 \subsection{Information Gain}

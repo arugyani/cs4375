@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.21)  19 MAR 2024 01:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.2.21)  19 MAR 2024 03:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -851,28 +851,28 @@ File: images/image.png Graphic file (type png)
 <use images/image.png>
 Package pdftex.def Info: images/image.png  used on input line 171.
 (pdftex.def)             Requested size: 426.79134pt x 123.87276pt.
- [5 <./images/image.png>] [6] [7] [8]
+ [5 <./images/image.png>] [6] [7] [8] [9]
 runsystem(makeindex defn.idx)...executed safely (allowed).
 
- (./defn.ind) [9
+ (./defn.ind) [10
 
 ] (./Decision Tree.aux)
 Package rerunfilecheck Info: File `"Decision Tree".out' has not changed.
 (rerunfilecheck)             Checksum: 1CEDF53E51CD4B66753E4EA328202CDC;1898.
  ) 
 Here is how much of TeX's memory you used:
- 29645 strings out of 476025
- 596512 string characters out of 5790017
+ 29662 strings out of 476025
+ 596735 string characters out of 5790017
  1873388 words of memory out of 5000000
- 49515 multiletter control sequences out of 15000+600000
+ 49523 multiletter control sequences out of 15000+600000
  559869 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  121i,12n,118p,1108b,2061s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/nowacki/iwona/iwonab.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/nowacki/iwona/iwonar.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/nowacki/iwona/iwonari.pfb>
-Output written on "Decision Tree.pdf" (9 pages, 284489 bytes).
+Output written on "Decision Tree.pdf" (10 pages, 290513 bytes).
 PDF statistics:
- 264 PDF objects out of 1000 (max. 8388607)
- 198 compressed objects within 2 object streams
- 39 named destinations out of 1000 (max. 500000)
+ 280 PDF objects out of 1000 (max. 8388607)
+ 212 compressed objects within 3 object streams
+ 48 named destinations out of 1000 (max. 500000)
  266 words of extra memory for PDF output out of 10000 (max. 10000000)
 
